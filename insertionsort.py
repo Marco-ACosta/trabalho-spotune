@@ -18,7 +18,6 @@ def insertion_sort(songs):
     
     return songs
 
-
 songs = Song.generate_random_songs(100)
 ordered = insertion_sort(songs)
 

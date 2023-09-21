@@ -1,4 +1,5 @@
 from music_utils import Song
+
 def merge(left, right):
     merged = []
     left_index, right_index = 0, 0
@@ -59,11 +60,8 @@ def merge_sort(songs):
     # Chama a função de merge para combinar as duas listas de forma ordenada.
     return merge(left_sorted, right_sorted)
 
-
 songs = Song.generate_random_songs(100)
 ordered = merge_sort(songs)
 
 for song in ordered:
     print("[", song.rating, "]", song.title, "-", song.artist, "-", song.genre, "-", song.release_date)
-
-

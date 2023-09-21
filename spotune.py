@@ -1,4 +1,3 @@
-
 from music_utils import Song
 
 def merge(left, right):
@@ -99,6 +98,8 @@ def create_buckets(songs = []):
     return buckets, genres_list
 
 def sort_genres(buckets = [], genres = []):
+    '''Ordena os gêneros de músicas'''
+
     new_bucket = []
     for i in range(1, len(genres)):
         current_genre = genres[i]
@@ -111,7 +112,7 @@ def sort_genres(buckets = [], genres = []):
     for genre in genres:
         for bucket in buckets:
             if bucket['genre'] == genre:
-                new_bucket.append({'genre': genre, 'songs': bucket['songs']})
+                new_bucket.append({ 'genre': genre, 'songs': bucket['songs'] })
                 break
     
     return new_bucket
@@ -128,7 +129,6 @@ for bucket in ordered_buckets:
         bucket['songs'] = merge_sort(bucket['songs'])
 
 for bucket in ordered_buckets:
-    print(f"Genêro: {bucket['genre'].capitalize()}\t\tQuantidade de músicas: {len(bucket['songs'])}")
+    print(f"\nGenêro: {bucket['genre'].capitalize()}\t\tQuantidade de músicas: {len(bucket['songs'])}")
     for song in bucket['songs']:
         print(f"\t[{song.rating}]", song.title, "-", song.artist, "-", song.genre, "-", song.release_date)
-

@@ -1,4 +1,5 @@
 from music_utils import Song
+
 def sort_genres(buckets = [], genres = []):
     new_bucket = []
     for i in range(1, len(genres)):
@@ -12,7 +13,7 @@ def sort_genres(buckets = [], genres = []):
     for genre in genres:
         for bucket in buckets:
             if bucket['genre'] == genre:
-                new_bucket.append({'genre': genre, 'songs': bucket['songs']})
+                new_bucket.append({ 'genre': genre, 'songs': bucket['songs'] })
                 break
     
     return new_bucket
@@ -27,7 +28,7 @@ def create_buckets(songs = []):
         genre = song.genre.upper()
         
         if genre not in genres_dic:
-            buckets.append({'genre': genre, 'songs': []})
+            buckets.append({ 'genre': genre, 'songs': [] })
             genres_dic[genre] = genres_c
             genres_list.append(genre)
             genres_c += 1
@@ -35,8 +36,6 @@ def create_buckets(songs = []):
         buckets[genres_dic[genre]]['songs'].append(song)
         
     return buckets, genres_list
-
-
 
 songs = Song.generate_random_songs(10)
 
