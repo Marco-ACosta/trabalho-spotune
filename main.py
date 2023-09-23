@@ -1,5 +1,13 @@
 from music_utils import Song
 
+'''
+TRABALHO SPOTUNE
+- Marco Antônio
+- Raisson Souza
+
+Esse é o arquivo principal do trabalho.
+'''
+
 def merge(left, right):
     merged = []
     left_index, right_index = 0, 0
