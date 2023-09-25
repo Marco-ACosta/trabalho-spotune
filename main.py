@@ -1,13 +1,6 @@
 from music_utils import Song
 import time
-
-'''
-TRABALHO SPOTUNE
-- Marco Antônio
-- Raisson Souza
-
-Esse é o arquivo principal do trabalho.
-'''
+from os import system
 
 def merge(left, right):
     merged = []
@@ -270,12 +263,14 @@ def main():
 
         else:
             print('Opção inválida, digite uma opção válida.\n')
+            time.sleep(1)
+            system("cls")
 
     for bucket in ordered_buckets:
-        print(f"Genêro: {bucket['genre'].capitalize()}\t\tQuantidade de músicas: {len(bucket['songs'])}")
+        print(f"Genêro: { bucket['genre'].capitalize() }\t\tQuantidade de músicas: { len(bucket['songs']) }")
         for song in bucket['songs']:
-            print(f"\t[{song.rating}]", song.title, "-", song.artist, "-", song.genre, "-", song.release_date)
+            print(f"\t[{ song.rating }]", song.title, "-", song.artist, "-", song.genre, "-", song.release_date)
 
-    print(f"Tempo gasto: {fim - inicio}")
+    print(f"\nTempo gasto: { str((fim - inicio) * 10)[0:4] }")
 
 main()
