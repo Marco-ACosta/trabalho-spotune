@@ -343,4 +343,4 @@ E os resultados:
 |:------:|:---------:|:--------:|:--------:|
 |1       |O(n log n) |O(n log n)|O(n log n)|
 |2       |O(n)       |O(n^2)    |O(n^2)    |
-|3       |O(n log n) |O(n log n)|O(n^2)    |
+|3       |O(n log n) |O(n^2)    |O(n^2)    |
