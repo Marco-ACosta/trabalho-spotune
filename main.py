@@ -236,36 +236,46 @@ def sort_genres(buckets = [], genres = []):
     # Retorna a lista de buckets ordenados
     return new_bucket
 
+def main():
+    songs = Song.generate_random_songs(100000)
+    buckets, genres = create_buckets(songs)
+    ordered_buckets = sort_genres(buckets, genres)
 
-songs = Song.generate_random_songs(100000)
-buckets, genres = create_buckets(songs)
-ordered_buckets = sort_genres(buckets, genres)
+    while True:
+        print('\t\t### Spotune ###\n\tComo deseja ordenar suas músicas?\n')
+        try:
+            opc = int(input('\t[ 1 ] Ano de Lançamento\n\t[ 2 ] Avaliação\n>>> '))
+        except:
+            opc = 4
 
-while(True):
-    opc = input('Quer ordenar as musicas por ano de lançamento? (s/n) ')
-    if opc == 's':
-        inicio = time.time()
-        for bucket in ordered_buckets:
-            if(len(bucket['songs']) > 7):
-                bucket['songs'] = merge_sort_data(bucket['songs'])
-            else:
-                bucket['songs'] = insertion_sort_data(bucket['songs'])
-        fim = time.time()
-        break
-    elif opc == 'n':
-        inicio = time.time()
-        for bucket in ordered_buckets:
-            if(len(bucket['songs']) > 7):
-                bucket['songs'] = merge_sort(bucket['songs'])
-            else:
-                bucket['songs'] = insertion_sort(bucket['songs'])
-        fim = time.time()
-        break
-    else:
-        print('Opção invalida, digite uma opção válida.')
+        if opc == 1:
+            inicio = time.time()
+            for bucket in ordered_buckets:
+                if (len(bucket['songs']) > 7):
+                    bucket['songs'] = merge_sort_data(bucket['songs'])
+                else:
+                    bucket['songs'] = insertion_sort_data(bucket['songs'])
+            fim = time.time()
+            break
 
-for bucket in ordered_buckets:
-    print(f"Genêro: {bucket['genre'].capitalize()}\t\tQuantidade de músicas: {len(bucket['songs'])}")
-    for song in bucket['songs']:
-        print(f"\t[{song.rating}]", song.title, "-", song.artist, "-", song.genre, "-", song.release_date)
-print(f"Tempo gasto: {fim - inicio}")
+        elif opc == 2:
+            inicio = time.time()
+            for bucket in ordered_buckets:
+                if (len(bucket['songs']) > 7):
+                    bucket['songs'] = merge_sort(bucket['songs'])
+                else:
+                    bucket['songs'] = insertion_sort(bucket['songs'])
+            fim = time.time()
+            break
+
+        else:
+            print('Opção inválida, digite uma opção válida.\n')
+
+    for bucket in ordered_buckets:
+        print(f"Genêro: {bucket['genre'].capitalize()}\t\tQuantidade de músicas: {len(bucket['songs'])}")
+        for song in bucket['songs']:
+            print(f"\t[{song.rating}]", song.title, "-", song.artist, "-", song.genre, "-", song.release_date)
+
+    print(f"Tempo gasto: {fim - inicio}")
+
+main()
